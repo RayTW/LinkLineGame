@@ -20,10 +20,10 @@ public class LinkCanvas extends GameCanvas implements MouseMotionListener, Mouse
 	private OnEventListener mListener;
 
 	public LinkCanvas() {
-		LinkCanvasInit();
+		init();
 	}
 
-	public void LinkCanvasInit() {
+	private void init() {
 		mRoles = new ArrayList<Role>();
 		addMouseMotionListener(this);
 		addMouseListener(this);
@@ -104,8 +104,6 @@ public class LinkCanvas extends GameCanvas implements MouseMotionListener, Mouse
 					}
 					// 點擊到牌
 					if (r.getName().matches("[0-9]{1,2}")) {
-						System.out.println("x[" + r.mMazeX + "]y[" + r.mMazeY + "]==" + r.getName());
-
 						mListener.onEvent(Event.CLICK_PEI, r);
 						return;
 					}

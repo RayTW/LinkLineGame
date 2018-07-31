@@ -36,7 +36,7 @@ public final class Utility {
 
 		AtomicInteger counter = new AtomicInteger();
 
-		Utility.get().cut("Img/poker.png", 148, 215, (image) -> {
+		cut("Img/poker.png", 148, 215, (image) -> {
 			String imageName = "poker_" + counter.get() + ".png";
 			mImgCache.put(imageName, image);
 

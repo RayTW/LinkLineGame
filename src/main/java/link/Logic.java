@@ -24,11 +24,6 @@ public class Logic implements OnEventListener {
 	private int mHeight = 65;
 
 	public Logic() {
-		LogicInit();
-	}
-
-	public void LogicInit() {
-
 	}
 
 	public void setDelegate(OnEventListener obj) {
@@ -68,17 +63,17 @@ public class Logic implements OnEventListener {
 	 */
 	public boolean checkLink(Role clickRole) {
 		if (mFocuskRole != null) {
-			if (mFocuskRole.mMazeX != clickRole.mMazeX || mFocuskRole.mMazeY != clickRole.mMazeY) {
+			if (mFocuskRole.getMazeX() != clickRole.getMazeX() || mFocuskRole.getMazeY() != clickRole.getMazeY()) {
 				if (mFocuskRole.getName().equals(clickRole.getName())) {
 					int[][] ary = arrayAddWall(mPeiArray);
-					ary[clickRole.mMazeX][clickRole.mMazeY] = 0;
-					ary[mFocuskRole.mMazeX][mFocuskRole.mMazeY] = 0;
-					String path = mMazeVisit.findLink(ary, clickRole.mMazeX, clickRole.mMazeY, mFocuskRole.mMazeX,
-							mFocuskRole.mMazeY);
+					ary[clickRole.getMazeX()][clickRole.getMazeY()] = 0;
+					ary[mFocuskRole.getMazeX()][mFocuskRole.getMazeY()] = 0;
+					String path = mMazeVisit.findLink(ary, clickRole.getMazeX(), clickRole.getMazeY(),
+							mFocuskRole.getMazeX(), mFocuskRole.getMazeY());
 
 					if (path.length() > 0) {// 兩張牌有相連的路徑，將兩張牌移除
-						mPeiArray[clickRole.mMazeX - 2][clickRole.mMazeY - 2] = 0;
-						mPeiArray[mFocuskRole.mMazeX - 2][mFocuskRole.mMazeY - 2] = 0;
+						mPeiArray[clickRole.getMazeX() - 2][clickRole.getMazeY() - 2] = 0;
+						mPeiArray[mFocuskRole.getMazeX() - 2][mFocuskRole.getMazeY() - 2] = 0;
 						clickRole.setFocus(true);// 被點到的牌發亮
 						LinkMovieObj movieObj = new LinkMovieObj(mFocuskRole, clickRole);
 						movieObj.setDelegate(this);
@@ -205,8 +200,8 @@ public class Logic implements OnEventListener {
 					r.setName(String.valueOf(ary[j]));
 					r.setLayerIndex(j + 2);
 					r.setKind(3);
-					r.mMazeX = x + 2;
-					r.mMazeY = y + 2;
+					r.setMazeX(x + 2);
+					r.setMazeY(y + 2);
 					mPeiArray[x][y] = ary[j];
 					roles.add(r);
 				}

@@ -21,8 +21,6 @@ public class RoleBase {
 	private int mH;
 	private int mIndex; // 角色的圖層
 	private int mFlag; // 目前角色動畫圖播到第幾個位置
-	private int mKind; // 角色類別,1:背景,2:按鈕,3:牌
-	private boolean mIsFoucs;
 	private Image[] mImages;
 
 	public RoleBase() {
@@ -38,14 +36,6 @@ public class RoleBase {
 
 	public void setOnRoleDeadListener(OnRoleDeadListener listener) {
 		mListener = listener;
-	}
-
-	public void setKind(int k) {
-		mKind = k;
-	}
-
-	public int getKind() {
-		return mKind;
 	}
 
 	public void setName(String n) {
@@ -120,14 +110,6 @@ public class RoleBase {
 
 	public int getH() {
 		return mH;
-	}
-
-	public void setFocus(boolean b) {
-		mIsFoucs = b;
-	}
-
-	public boolean isFocus() {
-		return mIsFoucs;
 	}
 
 	/**
